@@ -1,0 +1,3 @@
+billing_email: "billing@example.com"
+default_repository_permission: "read"
+members_can_create_repositories: false

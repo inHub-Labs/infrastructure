@@ -1,0 +1,11 @@
+name: someteam
+description: "Some description"
+privacy: closed
+members:
+  - handle: User1
+    role: maintainer
+  - handle: User2
+    role: member
+repositories:
+  - name: test-service
+    permission: push

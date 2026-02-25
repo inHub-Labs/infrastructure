@@ -2,27 +2,20 @@ name: Terraform Governance
 
 on:
   pull_request:
-    branches:
-      - feature/github-app
   push:
     branches:
       - main
-      - feature/github-app
-
-permissions:
-  contents: read
 
 jobs:
-  terraform-plan:
-    name: Terraform Plan
+  terraform:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v4
+        uses: hashicorp/setup-terraform@v3
 
       - name: Terraform Init
         run: terraform init
@@ -31,48 +24,12 @@ jobs:
         run: terraform validate
 
       - name: Terraform Plan
-        run: terraform plan -out=tfplan
-        env:
-          TF_VAR_github_organization: ${{ github.repository_owner }}
-          TF_VAR_github_app_id: ${{ secrets.TF_GITHUB_APP_ID }}
-          TF_VAR_github_app_installation_id: ${{ secrets.TF_GITHUB_APP_INSTALLATION_ID }}
-          TF_VAR_github_app_pem_file: ${{ secrets.TF_GITHUB_APP_PRIVATE_KEY }}
-
-      - name: Upload Terraform plan artifact
-        if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/github-app'
-        uses: actions/upload-artifact@v6
-        with:
-          name: tfplan
-          path: tfplan
-          if-no-files-found: error
-
-  terraform-apply:
-    name: Terraform Apply
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/feature/github-app'
-    needs: terraform-plan
-    runs-on: ubuntu-latest
-    environment: production
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup Terraform
-        uses: hashicorp/setup-terraform@v4
-
-      - name: Terraform Init
-        run: terraform init
-
-      - name: Download Terraform plan artifact
-        uses: actions/download-artifact@v7
-        with:
-          name: tfplan
-          path: .
+        if: github.event_name == 'pull_request'
+        run: terraform plan
 
       - name: Terraform Apply
-        run: terraform apply tfplan
+        if: github.ref == 'refs/heads/main'
+        run: terraform apply -auto-approve
         env:
-          TF_VAR_github_organization: ${{ github.repository_owner }}
-          TF_VAR_github_app_id: ${{ secrets.TF_GITHUB_APP_ID }}
-          TF_VAR_github_app_installation_id: ${{ secrets.TF_GITHUB_APP_INSTALLATION_ID }}
-          TF_VAR_github_app_pem_file: ${{ secrets.TF_GITHUB_APP_PRIVATE_KEY }}
+          TF_VAR_github_token: ${{ secrets.TF_VAR_github_token }}
+          TF_VAR_github_organization: ${{ secrets.TF_VAR_github_organization }}

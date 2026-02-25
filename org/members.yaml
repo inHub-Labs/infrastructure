@@ -1,0 +1,5 @@
+members:
+  - username: User1
+    role: member
+  - username: User2
+    role: member
