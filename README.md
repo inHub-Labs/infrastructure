@@ -4,21 +4,21 @@ Terraform manages GitHub repositories from YAML files in `repositories/`.
 
 ## Authentication
 
-The GitHub provider uses GitHub App authentication (`app_auth`) via environment variables.
-Provider config keeps an empty `app_auth {}` block to allow env-based auth.
+The GitHub provider uses GitHub App authentication (`app_auth`) via Terraform variables.
+In CI, variables are provided through `TF_VAR_*` environment variables.
 
 Required inputs:
 
 - `github_organization`
-- `GITHUB_APP_ID`
-- `GITHUB_APP_INSTALLATION_ID`
-- `GITHUB_APP_PEM_FILE`
+- `github_app_id`
+- `github_app_installation_id`
+- `github_app_pem_file`
 
-In GitHub Actions, these are mapped from repository secrets:
+In GitHub Actions, values are mapped from repository secrets:
 
-- `TF_GITHUB_APP_ID` -> `GITHUB_APP_ID`
-- `TF_GITHUB_APP_INSTALLATION_ID` -> `GITHUB_APP_INSTALLATION_ID`
-- `TF_GITHUB_APP_PRIVATE_KEY` -> `GITHUB_APP_PEM_FILE`
+- `TF_GITHUB_APP_ID` -> `TF_VAR_github_app_id`
+- `TF_GITHUB_APP_INSTALLATION_ID` -> `TF_VAR_github_app_installation_id`
+- `TF_GITHUB_APP_PRIVATE_KEY` -> `TF_VAR_github_app_pem_file`
 
 ## Structure
 
