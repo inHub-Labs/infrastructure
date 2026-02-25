@@ -1,11 +1,3 @@
-terraform {
-  required_providers {
-    github = {
-      source = "integrations/github"
-    }
-  }
-}
-
 resource "github_organization_settings" "this" {
   billing_email = var.billing_email
 
