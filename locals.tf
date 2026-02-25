@@ -1,4 +1,5 @@
 locals {
+
   repo_files = fileset("${path.module}/repositories", "*.yaml")
 
   repository_configs = [

@@ -2,10 +2,8 @@ name: someteam
 description: "Some description"
 privacy: closed
 members:
-  - handle: User1
-    role: maintainer
-  - handle: User2
+  - handle: skaletto-l
     role: member
 repositories:
-  - name: test-service
+  - name: test
     permission: push

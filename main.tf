@@ -1,8 +1,8 @@
-resource "github_actions_organization_variable" "aws_assume_role" {
-  variable_name = "GITHUB_AWS_ASSUME_ROLE"
+/* resource "github_actions_organization_variable" "aws_assume_role" {
+  variable_name = "AWS_ASSUME_ROLE"
   visibility    = "all"
   value         = "arn:aws:iam::994482169481:role/github-actions-terraform"
-}
+} */
 
 module "repositories" {
   source   = "./modules/repository"

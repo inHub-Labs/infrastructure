@@ -4,6 +4,6 @@ topics:
   - backend
   - test
 owners:
-  - skaletto-l
+  - Samvel27
 branch_strategy: main
 visibility: public
