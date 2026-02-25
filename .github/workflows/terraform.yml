@@ -3,11 +3,11 @@ name: Terraform Governance
 on:
   pull_request:
     branches:
-      - feature/github-app
+      - feat/github-app
   push:
     branches:
       - main
-      - feature/github-app
+      - feat/github-app
 
 permissions:
   contents: read
