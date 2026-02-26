@@ -54,3 +54,7 @@ Optional fields:
 
 - `branch_strategy` (default: `main`)
 - `visibility` (default: `public`, allowed: `public`, `private`, `internal`)
+
+Notes:
+
+- `terraform-managed` is always added to repository topics automatically.

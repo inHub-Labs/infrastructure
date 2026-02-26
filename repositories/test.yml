@@ -1,0 +1,8 @@
+name: red-camel
+description: test processing service
+topics:
+  - lol
+owners:
+  - gnersisyann
+branch_strategy: main
+visibility: private
