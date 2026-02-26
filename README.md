@@ -57,7 +57,6 @@ allow_auto_merge: false
 # merge_commit_message:
 delete_branch_on_merge: false
 web_commit_signoff_required: false
-auto_init: false
 archived: false
 archive_on_destroy: false
 # leave unset for org policy / GitHub default behavior

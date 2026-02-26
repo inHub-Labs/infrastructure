@@ -23,7 +23,6 @@ module "repositories" {
   merge_commit_message        = try(each.value.merge_commit_message, null)
   delete_branch_on_merge      = try(each.value.delete_branch_on_merge, false)
   web_commit_signoff_required = try(each.value.web_commit_signoff_required, false)
-  auto_init                   = try(each.value.auto_init, false)
   archived                    = try(each.value.archived, false)
   archive_on_destroy          = try(each.value.archive_on_destroy, false)
   vulnerability_alerts        = try(each.value.vulnerability_alerts, null)

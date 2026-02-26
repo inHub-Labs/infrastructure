@@ -12,7 +12,7 @@ resource "github_repository" "this" {
   description  = var.description
   visibility   = var.visibility
   topics       = var.topics
-  auto_init    = var.auto_init
+  auto_init    = true
 
   has_issues                  = var.has_issues
   has_discussions             = var.has_discussions

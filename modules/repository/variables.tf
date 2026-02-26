@@ -192,11 +192,6 @@ variable "web_commit_signoff_required" {
   default = false
 }
 
-variable "auto_init" {
-  type    = bool
-  default = false
-}
-
 variable "archived" {
   type    = bool
   default = false
