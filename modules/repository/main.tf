@@ -8,6 +8,7 @@ terraform {
 
 resource "github_repository" "this" {
   name        = var.name
+  homepage_url = "https://github.com/InformationSystemsAgency/vcs-automation"
   description = var.description
   visibility  = var.visibility
   topics      = var.topics
