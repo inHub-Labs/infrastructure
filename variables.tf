@@ -8,18 +8,8 @@ variable "github_organization" {
   }
 }
 
-variable "github_app_id" {
-  description = "GitHub App ID."
-  type        = string
-}
-
-variable "github_app_installation_id" {
-  description = "GitHub App installation ID."
-  type        = string
-}
-
-variable "github_app_pem_file" {
-  description = "GitHub App private key in PEM format."
+variable "github_token" {
+  description = "GitHub Personal Access Token with repo and admin:org scopes."
   type        = string
   sensitive   = true
 }

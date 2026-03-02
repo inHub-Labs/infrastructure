@@ -38,7 +38,7 @@ module "teams" {
 module "org_settings" {
   source = "./modules/org_settings"
 
-  billing_email = local.org_settings.billing_email
+  billing_email                           = local.org_settings.billing_email
   default_repository_permission           = try(local.org_settings.default_repository_permission, "read")
   members_can_create_repositories         = try(local.org_settings.members_can_create_repositories, false)
 }
